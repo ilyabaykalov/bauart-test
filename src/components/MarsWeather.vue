@@ -1,45 +1,45 @@
 <template>
 	<div>
-		<h2>{{ msg }}</h2>
+		<h2>Mars Weather</h2>
 
 		<table class='data-table'>
 			<thead class='head'>
-				<tr>
-					<th colspan='2'>Time</th>
-					<th colspan='3'>Air Temperature</th>
-					<th colspan='4'>Wind Speed</th>
-					<th colspan='3'>Pressure</th>
-				</tr>
+			<tr>
+				<th colspan='2'>Time</th>
+				<th colspan='3'>Air Temperature</th>
+				<th colspan='4'>Wind Speed</th>
+				<th colspan='3'>Pressure</th>
+			</tr>
 			</thead>
 			<tbody>
-				<tr id="weather_top">
-					<th class='date'>Date</th>
-					<th class='sol'>Sol</th>
-					<td class='max'>Max</td>
-					<td class='avg'>Avg</td>
-					<td class='min'>Min</td>
-					<td class='max'>Max</td>
-					<td class='avg'>Avg</td>
-					<td class='min'>Min</td>
-					<td class='dir'>Direction<br><span style="font-size:x-small">(most common)</span></td>
-					<td class='max'>Max</td>
-					<td class='avg'>Avg</td>
-					<td class='min'>Min</td>
-				</tr>
-				<tr v-for='(item, i) in result' :key='i'>
-					<th class='date'>{{ item.date }}</th>
-					<th class='sol'>{{ item.solar }}</th>
-					<td class='max'>{{ item.airTemperature.max }}</td>
-					<td class='avg'>{{ item.airTemperature.avg }}</td>
-					<td class='min'>{{ item.airTemperature.min }}</td>
-					<td class='max'>{{ item.windSpeed.max }}</td>
-					<td class='avg'>{{ item.windSpeed.avg }}</td>
-					<td class='min'>{{ item.windSpeed.min }}</td>
-					<td class='dir'>{{ item.windSpeed.direction }}</td>
-					<td class='max'>{{ item.pressure.max }}</td>
-					<td class='avg'>{{ item.pressure.avg }}</td>
-					<td class='min'>{{ item.pressure.min }}</td>
-				</tr>
+			<tr id="weather_top">
+				<th class='date'>Date</th>
+				<th class='sol'>Sol</th>
+				<td class='max'>Max</td>
+				<td class='avg'>Avg</td>
+				<td class='min'>Min</td>
+				<td class='max'>Max</td>
+				<td class='avg'>Avg</td>
+				<td class='min'>Min</td>
+				<td class='dir'>Direction<br><span style="font-size:x-small">(most common)</span></td>
+				<td class='max'>Max</td>
+				<td class='avg'>Avg</td>
+				<td class='min'>Min</td>
+			</tr>
+			<tr v-for='(item, i) in result' :key='i'>
+				<th class='date'>{{ item.date }}</th>
+				<th class='sol'>{{ item.solar }}</th>
+				<td class='max'>{{ item.airTemperature.max }}</td>
+				<td class='avg'>{{ item.airTemperature.avg }}</td>
+				<td class='min'>{{ item.airTemperature.min }}</td>
+				<td class='max'>{{ item.windSpeed.max }}</td>
+				<td class='avg'>{{ item.windSpeed.avg }}</td>
+				<td class='min'>{{ item.windSpeed.min }}</td>
+				<td class='dir'>{{ item.windSpeed.direction }}</td>
+				<td class='max'>{{ item.pressure.max }}</td>
+				<td class='avg'>{{ item.pressure.avg }}</td>
+				<td class='min'>{{ item.pressure.min }}</td>
+			</tr>
 			</tbody>
 		</table>
 	</div>
@@ -51,9 +51,6 @@
 
   export default {
     name: 'APOD',
-    props: {
-      msg: String
-    },
     data() {
       return {
         apiKey: 'e6XkhwrUrjGJZZZg5bAOUGCAuGOJMQF1kPwgn91q',
@@ -128,7 +125,7 @@
 
 </script>
 
-<style scoped>
+<style>
 	#result > h3 {
 		margin: 50px 100px 20px;
 	}
@@ -145,12 +142,15 @@
 	.sol, .dir {
 		background-color: rgba(226, 219, 79, 0.45);
 	}
+
 	.min {
 		background-color: rgba(226, 219, 79, 0.62);
 	}
+
 	.avg {
 		background-color: rgba(226, 219, 79, 0.71);
 	}
+
 	.max {
 		background-color: rgba(226, 219, 79, 0.73);
 	}

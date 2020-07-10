@@ -1,18 +1,16 @@
 <template>
-	<div>
-		<div id='earth'>
-			<h2>{{ msg }}</h2>
+	<div id='earth'>
+		<h2>Earth</h2>
 
-			<input v-model='latitude' type='text' placeholder='Latitude'>
-			<input v-model='longitude' type='text' placeholder='Longitude'>
-			<input v-model='dim' type='text' placeholder='Width and height of image in degrees'>
-			<input v-model='date' type='text' placeholder='Date (YYYY-MM-DD)'>
+		<input v-model='latitude' type='text' placeholder='Latitude'>
+		<input v-model='longitude' type='text' placeholder='Longitude'>
+		<input v-model='dim' type='text' placeholder='Width and height of image in degrees'>
+		<input v-model='date' type='text' placeholder='Date (YYYY-MM-DD)'>
 
-			<button v-on:click='getData()'>send</button>
+		<button v-on:click='getData()'>send</button>
 
-		</div>
 		<div id='result'>
-			<img :src='result.url' alt='картиночка'>
+			<img :src='result.url' alt=''>
 		</div>
 	</div>
 </template>
@@ -22,9 +20,6 @@
 
   export default {
     name: 'APOD',
-    props: {
-      msg: String
-    },
     data() {
       return {
         apiKey: 'e6XkhwrUrjGJZZZg5bAOUGCAuGOJMQF1kPwgn91q',
@@ -51,13 +46,14 @@
 
 </script>
 
-<style scoped>
+<style>
 	#earth {
 		display: flex;
 		flex-direction: column;
 		width: 150px;
 		margin: auto;
 		justify-content: center;
+		padding: 5px;
 	}
 
 	#result {
@@ -66,5 +62,16 @@
 
 	#result > h3 {
 		margin: 50px 100px 20px;
+	}
+
+	#earth > input {
+		margin-top: 5px;
+	}
+
+	#earth > button {
+		height: 30px;
+		width: 100%;
+		border-radius: 5px;
+		margin-top: 10px;
 	}
 </style>
