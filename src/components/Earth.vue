@@ -2,13 +2,14 @@
 	<div class='earth'>
 		<h2>Earth</h2>
 
-		<input v-model='latitude' type='text' placeholder='Latitude'>
-		<input v-model='longitude' type='text' placeholder='Longitude'>
-		<input v-model='dim' type='text' placeholder='Width and height of image in degrees'>
-		<input v-model='date' type='text' placeholder='Date (YYYY-MM-DD)'>
+		<div class='form'>
+			<input v-model='latitude' type='text' placeholder='Latitude'>
+			<input v-model='longitude' type='text' placeholder='Longitude'>
+			<input v-model='dim' type='text' placeholder='Width and height of image in degrees'>
+			<input v-model='date' type='text' placeholder='Date (YYYY-MM-DD)'>
 
-		<button v-on:click='getData()'>send</button>
-
+			<button v-on:click='getData()'>send</button>
+		</div>
 		<div class='result'>
 			<img :src='result.url' alt=''>
 		</div>
@@ -44,32 +45,38 @@
 
 </script>
 
-<style>
+<style lang='scss'>
 	.earth {
 		display: flex;
 		flex-direction: column;
-		width: 150px;
-		margin: auto;
-		justify-content: center;
-		padding: 5px;
-	}
 
-	.result {
-		margin-top: 30px;
-	}
+		.form {
+			display: flex;
+			flex-direction: column;
+			width: 150px;
+			margin: auto;
+			padding: 5px;
+		}
 
-	.result > h3 {
-		margin: 50px 100px 20px;
-	}
+		input {
+			margin-top: 5px;
+		}
 
-	.earth > input {
-		margin-top: 5px;
-	}
+		button {
+			height: 30px;
+			width: 100%;
+			border-radius: 5px;
+			margin-top: 10px;
+		}
 
-	.earth > button {
-		height: 30px;
-		width: 100%;
-		border-radius: 5px;
-		margin-top: 10px;
+		.result {
+			display: flex;
+			flex-direction: column;
+
+			img {
+				width: 60vh;
+				margin: auto;
+			}
+		}
 	}
 </style>

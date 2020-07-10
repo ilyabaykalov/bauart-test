@@ -14,16 +14,18 @@
 	</div>
 </template>
 
-<style>
-	.menu > button {
-		height: 30px;
-		width: max-content;
-		border-radius: 5px;
-		margin: 0 5px;
-	}
+<style lang='scss'>
+	.menu {
+		button {
+			height: 30px;
+			width: max-content;
+			border-radius: 5px;
+			margin: 0 5px;
 
-	.menu > button > a {
-		text-decoration: none;
-		color: #2c3e50;
+			a {
+				text-decoration: none;
+				color: #2c3e50;
+			}
+		}
 	}
 </style>

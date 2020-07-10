@@ -122,29 +122,29 @@
 
 </script>
 
-<style>
+<style lang='scss'>
 	.data-table {
 		width: 70%;
 		margin: auto;
-	}
 
-	.head, .date {
-		background-color: rgba(226, 219, 79, 0.31);
-	}
+		.head, .date {
+			background-color: rgba(226, 219, 79, 0.31);
+		}
 
-	.sol, .dir {
-		background-color: rgba(226, 219, 79, 0.45);
-	}
+		.sol, .dir {
+			background-color: rgba(226, 219, 79, 0.45);
+		}
 
-	.min {
-		background-color: rgba(226, 219, 79, 0.62);
-	}
+		.min {
+			background-color: rgba(226, 219, 79, 0.62);
+		}
 
-	.avg {
-		background-color: rgba(226, 219, 79, 0.71);
-	}
+		.avg {
+			background-color: rgba(226, 219, 79, 0.71);
+		}
 
-	.max {
-		background-color: rgba(226, 219, 79, 0.73);
+		.max {
+			background-color: rgba(226, 219, 79, 0.73);
+		}
 	}
 </style>

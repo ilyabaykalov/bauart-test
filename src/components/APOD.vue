@@ -2,12 +2,14 @@
 	<div class='apod'>
 		<h2>APOD</h2>
 
-		<input v-model='date' type='text' placeholder='Date (YYYY-MM-DD)'>
-		<label>HD?<input v-model='isHD' type='checkbox'></label>
+		<div class='form'>
+			<input v-model='date' type='text' placeholder='Date (YYYY-MM-DD)'>
+			<label>HD?<input v-model='isHD' type='checkbox'></label>
 
-		<button v-on:click='getData'>send</button>
+			<button v-on:click='getData'>send</button>
+		</div>
 
-		<div id='result'>
+		<div class='result'>
 			<h2>{{ result.title }}</h2>
 			<h3>{{ result.explanation }}</h3>
 			<img :src='result.url' alt=''>
@@ -48,31 +50,32 @@
   };
 </script>
 
-<style>
+<style lang='scss'>
 	.apod {
-		display: flex;
-		flex-direction: column;
-		width: 150px;
-		margin: auto;
-		justify-content: center;
-	}
+		.form {
+			width: 150px;
+			display: flex;
+			flex-direction: column;
+			margin: auto;
+		}
 
-	.apod > input {
-		margin-top: 5px;
-	}
+		input {
+			margin-top: 5px;
+		}
 
-	.apod > button {
-		height: 30px;
-		width: 100%;
-		margin-top: 10px;
-		border-radius: 5px;
-	}
+		button {
+			height: 30px;
+			width: 100%;
+			margin-top: 10px;
+			border-radius: 5px;
+		}
 
-	.result {
-		margin-top: 30px;
-	}
+		.result {
+			margin-top: 30px;
 
-	.result > h3 {
-		margin: 50px 100px 20px;
+			h3 {
+				margin: 30px 100px 20px;
+			}
+		}
 	}
 </style>
