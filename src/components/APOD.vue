@@ -9,11 +9,14 @@
 			<button v-on:click='getData'>send</button>
 		</div>
 
+		<p class='error' v-show='this.isError'>Ошибочка :С</p>
+
 		<div class='result' v-show='isLoaded'>
 			<h2>{{ result.title }}</h2>
 			<h3>{{ result.explanation }}</h3>
 			<img :src='result.url' alt='' @load='loaded'>
 		</div>
+
 		<Preloader class='preloader' v-show='isLoading'/>
 	</div>
 </template>
@@ -29,6 +32,7 @@
         apiKey: 'e6XkhwrUrjGJZZZg5bAOUGCAuGOJMQF1kPwgn91q',
         isLoading: false,
         isLoaded: false,
+        isError: false,
         date: '',
         isHD: false,
         result: {
@@ -49,7 +53,11 @@
               this.result.explanation = res.data.explanation;
               this.result.url = this.isHD ? res.data.hdurl : res.data.url;
             })
-            .catch(console.error);
+            .catch(err => {
+              console.error(err);
+              this.isError = true;
+              this.isLoading = false;
+            });
       },
       loaded() {
         {
@@ -79,6 +87,11 @@
 			width: 100%;
 			margin-top: 10px;
 			border-radius: 5px;
+		}
+
+		.error {
+			font-size: 24pt;
+			color: red;
 		}
 
 		.result {

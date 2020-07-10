@@ -2,6 +2,8 @@
 	<div>
 		<h2>Mars Weather</h2>
 
+		<p class='error' v-show='this.isError'>Ошибочка :С</p>
+
 		<table class='data-table' v-show='isLoaded'>
 			<thead class='head'>
 			<tr>
@@ -42,6 +44,7 @@
 			</tr>
 			</tbody>
 		</table>
+
 		<Preloader v-show='isLoading'/>
 	</div>
 </template>
@@ -58,6 +61,7 @@
         apiKey: 'e6XkhwrUrjGJZZZg5bAOUGCAuGOJMQF1kPwgn91q',
         isLoading: false,
         isLoaded: false,
+        isError: false,
         result: [{
           date: '',
           solar: '',
@@ -91,7 +95,11 @@
             this.isLoading = false;
             this.isLoaded = true;
           })
-          .catch(console.error);
+          .catch(err => {
+            console.error(err);
+            this.isError = true;
+            this.isLoading = false;
+          });
     },
 
     methods: {
@@ -154,5 +162,10 @@
 		.max {
 			background-color: rgba(226, 219, 79, 0.73);
 		}
+	}
+
+	.error {
+		font-size: 24pt;
+		color: red;
 	}
 </style>

@@ -10,9 +10,13 @@
 
 			<button v-on:click='getData()'>send</button>
 		</div>
+
+		<p class='error' v-show='this.isError'>Ошибочка :С</p>
+
 		<div class='result' v-show='isLoaded'>
 			<img :src='result.url' alt='' @load='loaded'>
 		</div>
+
 		<Preloader v-show='isLoading'/>
 	</div>
 </template>
@@ -28,6 +32,7 @@
         apiKey: 'e6XkhwrUrjGJZZZg5bAOUGCAuGOJMQF1kPwgn91q',
         isLoading: false,
         isLoaded: false,
+        isError: false,
         date: '',
         latitude: '',
         longitude: '',
@@ -44,7 +49,11 @@
         this.axios
             .get(`https://api.nasa.gov/planetary/earth/assets?lon=${ this.longitude }&lat=${ this.latitude }${ this.dim !== '' ? `&dim=${ this.dim }` : '' }&date=${ this.date }&api_key=${ this.apiKey }`)
             .then(res => this.result.url = res.data.url)
-            .catch(console.error);
+            .catch(err => {
+              console.error(err);
+              this.isError = true;
+              this.isLoading = false;
+            });
       },
       loaded() {
         this.isLoaded = true;
@@ -77,6 +86,11 @@
 			width: 100%;
 			border-radius: 5px;
 			margin-top: 10px;
+		}
+
+		.error {
+			font-size: 24pt;
+			color: red;
 		}
 
 		.result {
