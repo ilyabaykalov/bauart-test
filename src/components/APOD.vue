@@ -18,8 +18,6 @@
 </template>
 
 <script>
-  import axios from 'axios';
-
   export default {
     name: 'APOD',
     data() {
@@ -36,7 +34,7 @@
     },
     methods: {
       getData() {
-        axios
+        this.axios
             .get(`https://api.nasa.gov/planetary/apod?date=${ this.date }&api_key=${ this.apiKey }`)
             .then(this.showResponse)
             .catch(console.error);

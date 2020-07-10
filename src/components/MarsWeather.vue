@@ -46,7 +46,6 @@
 </template>
 
 <script>
-  import axios from 'axios';
   import moment from 'moment';
 
   export default {
@@ -77,7 +76,7 @@
       };
     },
     mounted() {
-      axios
+      this.axios
           .get('https://api.nasa.gov/insight_weather/?ver=1.0&feedtype=json&api_key=e6XkhwrUrjGJZZZg5bAOUGCAuGOJMQF1kPwgn91q')
           .then(res => this.parseResponse(res))
           .then(parsedRes => {

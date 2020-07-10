@@ -17,8 +17,6 @@
 </template>
 
 <script>
-  import axios from 'axios';
-
   export default {
     name: 'APOD',
     data() {
@@ -35,7 +33,7 @@
     },
     methods: {
       getData() {
-        axios
+        this.axios
             .get(`https://api.nasa.gov/planetary/earth/assets?lon=${ this.longitude }&lat=${ this.latitude }&dim=${ this.dim }&date=${ this.date }&api_key=${ this.apiKey }`)
             .then(res => this.result.url = res.data.url)
             .catch(console.error);
