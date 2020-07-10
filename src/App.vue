@@ -1,6 +1,6 @@
 <template>
 	<div id='app'>
-		<h1><a href='/'>BauArt Test</a></h1>
+		<h1><router-link to='/'>BauArt Test</router-link></h1>
 		<hr>
 		<router-view/>
 	</div>

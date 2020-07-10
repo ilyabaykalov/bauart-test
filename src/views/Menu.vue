@@ -1,10 +1,16 @@
 <template>
-	<div id='menu'>
+	<div class='menu'>
 		<h2>Menu</h2>
 
-		<button onclick='document.location="/apod"'>APOD</button>
-		<button onclick='document.location="/earth"'>Earth</button>
-		<button onclick='document.location="/mars"'>Mars Weather</button>
+		<button>
+			<router-link to='/apod'>APOD</router-link>
+		</button>
+		<button>
+			<router-link to='/earth'>Earth</router-link>
+		</button>
+		<button>
+			<router-link to='/mars'>Mars Weather</router-link>
+		</button>
 	</div>
 </template>
 
