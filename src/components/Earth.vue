@@ -10,18 +10,24 @@
 
 			<button v-on:click='getData()'>send</button>
 		</div>
-		<div class='result'>
-			<img :src='result.url' alt=''>
+		<div class='result' v-show='isLoaded'>
+			<img :src='result.url' alt='' @load='loaded'>
 		</div>
+		<Preloader v-show='isLoading'/>
 	</div>
 </template>
 
 <script>
+  import Preloader from '@/components/Preloader';
+
   export default {
     name: 'APOD',
+    components: { Preloader },
     data() {
       return {
         apiKey: 'e6XkhwrUrjGJZZZg5bAOUGCAuGOJMQF1kPwgn91q',
+        isLoading: false,
+        isLoaded: false,
         date: '',
         latitude: '',
         longitude: '',
@@ -33,10 +39,16 @@
     },
     methods: {
       getData() {
+        this.isLoading = true;
+        this.isLoaded = false;
         this.axios
-            .get(`https://api.nasa.gov/planetary/earth/assets?lon=${ this.longitude }&lat=${ this.latitude }&dim=${ this.dim }&date=${ this.date }&api_key=${ this.apiKey }`)
+            .get(`https://api.nasa.gov/planetary/earth/assets?lon=${ this.longitude }&lat=${ this.latitude }${ this.dim !== '' ? `&dim=${ this.dim }` : '' }&date=${ this.date }&api_key=${ this.apiKey }`)
             .then(res => this.result.url = res.data.url)
             .catch(console.error);
+      },
+      loaded() {
+        this.isLoaded = true;
+        this.isLoading = false;
       }
     }
   };

@@ -2,7 +2,7 @@
 	<div>
 		<h2>Mars Weather</h2>
 
-		<table class='data-table'>
+		<table class='data-table' v-show='isLoaded'>
 			<thead class='head'>
 			<tr>
 				<th colspan='2'>Time</th>
@@ -42,17 +42,22 @@
 			</tr>
 			</tbody>
 		</table>
+		<Preloader v-show='isLoading'/>
 	</div>
 </template>
 
 <script>
   import moment from 'moment';
+  import Preloader from '@/components/Preloader';
 
   export default {
     name: 'APOD',
+    components: { Preloader },
     data() {
       return {
         apiKey: 'e6XkhwrUrjGJZZZg5bAOUGCAuGOJMQF1kPwgn91q',
+        isLoading: false,
+        isLoaded: false,
         result: [{
           date: '',
           solar: '',
@@ -76,11 +81,15 @@
       };
     },
     mounted() {
+      this.isLoading = true;
       this.axios
           .get('https://api.nasa.gov/insight_weather/?ver=1.0&feedtype=json&api_key=e6XkhwrUrjGJZZZg5bAOUGCAuGOJMQF1kPwgn91q')
           .then(res => this.parseResponse(res))
           .then(parsedRes => {
             this.result = parsedRes;
+
+            this.isLoading = false;
+            this.isLoaded = true;
           })
           .catch(console.error);
     },

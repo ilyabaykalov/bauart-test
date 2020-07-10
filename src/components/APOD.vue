@@ -9,20 +9,26 @@
 			<button v-on:click='getData'>send</button>
 		</div>
 
-		<div class='result'>
+		<div class='result' v-show='isLoaded'>
 			<h2>{{ result.title }}</h2>
 			<h3>{{ result.explanation }}</h3>
-			<img :src='result.url' alt=''>
+			<img :src='result.url' alt='' @load='loaded'>
 		</div>
+		<Preloader class='preloader' v-show='isLoading'/>
 	</div>
 </template>
 
 <script>
+  import Preloader from '@/components/Preloader';
+
   export default {
     name: 'APOD',
+    components: { Preloader },
     data() {
       return {
         apiKey: 'e6XkhwrUrjGJZZZg5bAOUGCAuGOJMQF1kPwgn91q',
+        isLoading: false,
+        isLoaded: false,
         date: '',
         isHD: false,
         result: {
@@ -34,15 +40,22 @@
     },
     methods: {
       getData() {
+        this.isLoading = true;
+        this.isLoaded = false;
         this.axios
             .get(`https://api.nasa.gov/planetary/apod?date=${ this.date }&api_key=${ this.apiKey }`)
-            .then(this.showResponse)
+            .then(res => {
+              this.result.title = res.data.title;
+              this.result.explanation = res.data.explanation;
+              this.result.url = this.isHD ? res.data.hdurl : res.data.url;
+            })
             .catch(console.error);
       },
-      showResponse(res) {
-        this.result.title = res.data.title;
-        this.result.explanation = res.data.explanation;
-        this.result.url = this.isHD ? res.data.hdurl : res.data.url;
+      loaded() {
+        {
+          this.isLoaded = true;
+          this.isLoading = false;
+        }
       }
     }
   };
