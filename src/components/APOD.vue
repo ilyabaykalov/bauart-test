@@ -1,5 +1,5 @@
 <template>
-	<div id='apod'>
+	<div class='apod'>
 		<h2>APOD</h2>
 
 		<input v-model='date' type='text' placeholder='Date (YYYY-MM-DD)'>
@@ -49,7 +49,7 @@
 </script>
 
 <style>
-	#apod {
+	.apod {
 		display: flex;
 		flex-direction: column;
 		width: 150px;
@@ -57,22 +57,22 @@
 		justify-content: center;
 	}
 
-	#result {
-		margin-top: 30px;
-	}
-
-	#result > h3 {
-		margin: 50px 100px 20px;
-	}
-
-	#apod > input {
+	.apod > input {
 		margin-top: 5px;
 	}
 
-	#apod > button {
+	.apod > button {
 		height: 30px;
 		width: 100%;
 		margin-top: 10px;
 		border-radius: 5px;
+	}
+
+	.result {
+		margin-top: 30px;
+	}
+
+	.result > h3 {
+		margin: 50px 100px 20px;
 	}
 </style>

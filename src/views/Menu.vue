@@ -9,10 +9,15 @@
 </template>
 
 <style>
-	#menu > button {
+	.menu > button {
 		height: 30px;
 		width: max-content;
 		border-radius: 5px;
 		margin: 0 5px;
+	}
+
+	.menu > button > a {
+		text-decoration: none;
+		color: #2c3e50;
 	}
 </style>

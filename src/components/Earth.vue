@@ -1,5 +1,5 @@
 <template>
-	<div id='earth'>
+	<div class='earth'>
 		<h2>Earth</h2>
 
 		<input v-model='latitude' type='text' placeholder='Latitude'>
@@ -9,7 +9,7 @@
 
 		<button v-on:click='getData()'>send</button>
 
-		<div id='result'>
+		<div class='result'>
 			<img :src='result.url' alt=''>
 		</div>
 	</div>
@@ -47,7 +47,7 @@
 </script>
 
 <style>
-	#earth {
+	.earth {
 		display: flex;
 		flex-direction: column;
 		width: 150px;
@@ -56,19 +56,19 @@
 		padding: 5px;
 	}
 
-	#result {
+	.result {
 		margin-top: 30px;
 	}
 
-	#result > h3 {
+	.result > h3 {
 		margin: 50px 100px 20px;
 	}
 
-	#earth > input {
+	.earth > input {
 		margin-top: 5px;
 	}
 
-	#earth > button {
+	.earth > button {
 		height: 30px;
 		width: 100%;
 		border-radius: 5px;

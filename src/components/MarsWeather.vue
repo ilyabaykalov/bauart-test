@@ -12,7 +12,7 @@
 			</tr>
 			</thead>
 			<tbody>
-			<tr id="weather_top">
+			<tr>
 				<th class='date'>Date</th>
 				<th class='sol'>Sol</th>
 				<td class='max'>Max</td>
@@ -21,7 +21,7 @@
 				<td class='max'>Max</td>
 				<td class='avg'>Avg</td>
 				<td class='min'>Min</td>
-				<td class='dir'>Direction<br><span style="font-size:x-small">(most common)</span></td>
+				<td class='dir'>Direction<br><span style='font-size:x-small'>(most common)</span></td>
 				<td class='max'>Max</td>
 				<td class='avg'>Avg</td>
 				<td class='min'>Min</td>
@@ -126,10 +126,6 @@
 </script>
 
 <style>
-	#result > h3 {
-		margin: 50px 100px 20px;
-	}
-
 	.data-table {
 		width: 70%;
 		margin: auto;
