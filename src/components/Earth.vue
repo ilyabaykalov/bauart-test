@@ -1,6 +1,6 @@
 <template>
 	<div>
-		<div id='apod'>
+		<div id='earth'>
 			<h2>{{ msg }}</h2>
 
 			<input v-model='latitude' type='text' placeholder='Latitude'>
@@ -52,7 +52,7 @@
 </script>
 
 <style scoped>
-	#apod {
+	#earth {
 		display: flex;
 		flex-direction: column;
 		width: 150px;

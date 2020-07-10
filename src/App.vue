@@ -1,17 +1,17 @@
 <template>
 	<div id='app'>
 		<h1>BauArt Test</h1>
-		<Earth msg='Earth'/>
+		<MarsWeather msg='MarsWeather'/>
 	</div>
 </template>
 
 <script>
-  import Earth from './components/Earth';
+  import MarsWeather from './components/MarsWeather';
 
   export default {
     name: 'App',
     components: {
-      Earth
+      MarsWeather
     }
   };
 </script>
