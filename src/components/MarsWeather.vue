@@ -81,8 +81,9 @@
           .get('https://api.nasa.gov/insight_weather/?ver=1.0&feedtype=json&api_key=e6XkhwrUrjGJZZZg5bAOUGCAuGOJMQF1kPwgn91q')
           .then(res => this.parseResponse(res))
           .then(parsedRes => {
-            this.showResponse(parsedRes);
-          });
+            this.result = parsedRes;
+          })
+          .catch(console.error);
     },
 
     methods: {

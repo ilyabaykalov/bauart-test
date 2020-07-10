@@ -36,7 +36,8 @@
       getData() {
         axios
             .get(`https://api.nasa.gov/planetary/apod?date=${ this.date }&api_key=${ this.apiKey }`)
-            .then(res => this.showResponse(res));
+            .then(this.showResponse)
+            .catch(console.error);
       },
       showResponse(res) {
         this.result.title = res.data.title;
@@ -45,7 +46,6 @@
       }
     }
   };
-
 </script>
 
 <style>

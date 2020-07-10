@@ -36,10 +36,8 @@
       getData() {
         axios
             .get(`https://api.nasa.gov/planetary/earth/assets?lon=${ this.longitude }&lat=${ this.latitude }&dim=${ this.dim }&date=${ this.date }&api_key=${ this.apiKey }`)
-            .then(res => this.showResponse(res));
-      },
-      showResponse(res) {
-        this.result.url = res.data.url;
+            .then(res => this.result.url = res.data.url)
+            .catch(console.error);
       }
     }
   };
