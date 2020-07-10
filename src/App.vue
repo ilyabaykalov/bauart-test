@@ -1,17 +1,17 @@
 <template>
 	<div id='app'>
 		<h1>BauArt Test</h1>
-		<APOD msg='APOD'/>
+		<Earth msg='Earth'/>
 	</div>
 </template>
 
 <script>
-  import APOD from './components/APOD';
+  import Earth from './components/Earth';
 
   export default {
     name: 'App',
     components: {
-      APOD
+      Earth
     }
   };
 </script>

@@ -3,15 +3,15 @@
 		<div id='apod'>
 			<h2>{{ msg }}</h2>
 
-			<label>Date*<input v-model='date' type='text' placeholder='Date (YYYY-MM-DD)'></label>
-			<label>HD?<input v-model='isHD' type='checkbox'></label>
+			<input v-model='latitude' type='text' placeholder='Latitude'>
+			<input v-model='longitude' type='text' placeholder='Longitude'>
+			<input v-model='dim' type='text' placeholder='Width and height of image in degrees'>
+			<input v-model='date' type='text' placeholder='Date (YYYY-MM-DD)'>
 
 			<button v-on:click='getData()'>send</button>
 
 		</div>
 		<div id='result'>
-			<h2>{{ result.title }}</h2>
-			<h3>{{ result.explanation }}</h3>
 			<img :src='result.url' alt='картиночка'>
 		</div>
 	</div>
@@ -29,10 +29,10 @@
       return {
         apiKey: 'e6XkhwrUrjGJZZZg5bAOUGCAuGOJMQF1kPwgn91q',
         date: '',
-        isHD: false,
+        latitude: '',
+        longitude: '',
+        dim: '',
         result: {
-          title: '',
-          explanation: '',
           url: ''
         }
       };
@@ -40,13 +40,11 @@
     methods: {
       getData() {
         axios
-            .get(`https://api.nasa.gov/planetary/apod?date=${ this.date }&api_key=${ this.apiKey }`)
+            .get(`https://api.nasa.gov/planetary/earth/assets?lon=${ this.longitude }&lat=${ this.latitude }&dim=${ this.dim }&date=${ this.date }&api_key=${ this.apiKey }`)
             .then(res => this.showResponse(res));
       },
       showResponse(res) {
-        this.result.title = res.data.title;
-        this.result.explanation = res.data.explanation;
-        this.result.url = this.isHD ? res.data.hdurl : res.data.url;
+        this.result.url = res.data.url;
       }
     }
   };
