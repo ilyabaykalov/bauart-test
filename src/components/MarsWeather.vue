@@ -112,14 +112,10 @@
             pressure.avg = data[solar].PRE.av.toFixed(2);
             pressure.min = data[solar].PRE.mn.toFixed(2);
 
-            console.log({ date, solar, airTemperature, windSpeed, pressure });
             parsedData.push({ date, solar, airTemperature, windSpeed, pressure });
           });
         }
         return parsedData;
-      },
-      showResponse(data) {
-        this.result = data;
       }
     }
   };
