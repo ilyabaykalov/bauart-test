@@ -2,7 +2,7 @@
 	<div>
 		<h2>Mars Weather</h2>
 
-		<p class='error' v-show='this.isError'>Ошибочка :С</p>
+		<p class='error' v-show='this.isError'>{{ errorMessage }}</p>
 
 		<table class='data-table' v-show='isLoaded'>
 			<thead class='head'>
@@ -81,7 +81,8 @@
             avg: '',
             min: ''
           }
-        }]
+        }],
+        errorMessage: ''
       };
     },
     mounted() {
@@ -96,7 +97,7 @@
             this.isLoaded = true;
           })
           .catch(err => {
-            console.error(err);
+            this.errorMessage = err.message;
             this.isError = true;
             this.isLoading = false;
           });

@@ -11,7 +11,7 @@
 			<button v-on:click='getData()'>send</button>
 		</div>
 
-		<p class='error' v-show='this.isError'>Ошибочка :С</p>
+		<p class='error' v-show='this.isError'>{{ errorMessage }}</p>
 
 		<div class='result' v-show='isLoaded'>
 			<img :src='result.url' alt='' @load='loaded'>
@@ -39,7 +39,8 @@
         dim: '',
         result: {
           url: ''
-        }
+        },
+        errorMessage: ''
       };
     },
     methods: {
@@ -50,7 +51,7 @@
             .get(`https://api.nasa.gov/planetary/earth/assets?lon=${ this.longitude }&lat=${ this.latitude }${ this.dim !== '' ? `&dim=${ this.dim }` : '' }&date=${ this.date }&api_key=${ this.apiKey }`)
             .then(res => this.result.url = res.data.url)
             .catch(err => {
-              console.error(err);
+              this.errorMessage = err.message;
               this.isError = true;
               this.isLoading = false;
             });
