@@ -6,7 +6,7 @@
 			<input v-model='latitude' type='text' placeholder='Latitude'>
 			<input v-model='longitude' type='text' placeholder='Longitude'>
 			<input v-model='dim' type='text' placeholder='Width and height of image in degrees'>
-			<input v-model='date' type='text' placeholder='Date (YYYY-MM-DD)'>
+			<input v-model='date' type='date' placeholder='Date (YYYY-MM-DD)'>
 
 			<button v-on:click='getData()'>send</button>
 		</div>

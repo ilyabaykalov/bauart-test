@@ -3,7 +3,7 @@
 		<h2>APOD</h2>
 
 		<div class='form'>
-			<input v-model='date' type='text' placeholder='Date (YYYY-MM-DD)'>
+			<input v-model='date' type='date' placeholder='Date (YYYY-MM-DD)' @load='loadDate'>
 			<label>HD?<input v-model='isHD' type='checkbox'></label>
 
 			<button v-on:click='getData'>send</button>
@@ -58,6 +58,9 @@
               this.isError = true;
               this.isLoading = false;
             });
+      },
+      loadDate() {
+        this.date = new Date();
       },
       loaded() {
         {
