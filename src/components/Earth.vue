@@ -49,11 +49,26 @@
         this.isLoaded = false;
         this.axios
             .get(`https://api.nasa.gov/planetary/earth/assets?lon=${ this.longitude }&lat=${ this.latitude }${ this.dim !== '' ? `&dim=${ this.dim }` : '' }&date=${ this.date }&api_key=${ this.apiKey }`)
-            .then(res => this.result.url = res.data.url)
+            .then(res => {
+              this.result.url = res.data.url;
+
+              return this.result;
+            })
+            .then(this.sendDataToServer)
             .catch(err => {
               this.errorMessage = err.message;
               this.isError = true;
               this.isLoading = false;
+            });
+      },
+      sendDataToServer(result) {
+        this.axios
+            .post('http://localhost:3000/earth', result)
+            .then(res => {
+              console.log(res.data.jsonPath);
+            })
+            .catch(err => {
+              throw new Error(`Ошибка отправки данных на сервер\n ${ err }`);
             });
       },
       loaded() {

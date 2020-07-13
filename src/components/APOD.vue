@@ -6,7 +6,7 @@
 			<input v-model='date' type='date' placeholder='Date (YYYY-MM-DD)'>
 			<label>HD?<input v-model='isHD' type='checkbox'></label>
 
-			<button v-on:click='getData'>send</button>
+			<button v-on:click='loading'>send</button>
 		</div>
 
 		<p class='error' v-show='this.isError'>{{ errorMessage }}</p>
@@ -45,21 +45,39 @@
     },
     methods: {
       getData() {
-        this.isLoading = true;
-        this.isLoaded = false;
-
         this.axios
             .get(`https://api.nasa.gov/planetary/apod?${ this.date !== '' ? `date=${ this.date }` : '' }&api_key=${ this.apiKey }`)
             .then(res => {
               this.result.title = res.data.title;
               this.result.explanation = res.data.explanation;
               this.result.url = this.isHD ? res.data.hdurl : res.data.url;
+
+              return this.result;
             })
+            .then(this.sendDataToServer)
             .catch(err => {
               this.errorMessage = err.message;
               this.isError = true;
               this.isLoading = false;
             });
+      },
+      sendDataToServer(result) {
+        this.axios
+            .post('http://localhost:3000/apod', result)
+            .then(res => {
+              console.log(res.data.jsonPath, res.data.imagePath);
+            })
+            .catch(err => {
+              throw new Error(`Ошибка отправки данных на сервер\n ${ err }`);
+            });
+      },
+      loading() {
+        this.isError = false;
+
+        this.isLoading = true;
+        this.isLoaded = false;
+
+        this.getData();
       },
       loaded() {
         {

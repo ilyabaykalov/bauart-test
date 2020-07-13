@@ -95,7 +95,10 @@
 
             this.isLoading = false;
             this.isLoaded = true;
+
+            return this.result;
           })
+          .then(this.sendDataToServer)
           .catch(err => {
             this.errorMessage = err.message;
             this.isError = true;
@@ -110,6 +113,11 @@
 
         if (data) {
           let solKeys = data['sol_keys'];
+
+          if (solKeys.length === 0) {
+            throw new Error('Ошибка данных');
+          }
+
           solKeys.forEach(solar => {
             let date = moment(data[solar]['Last_UTC']).utc().format('MMMM D, Y');
 
@@ -133,6 +141,16 @@
           });
         }
         return parsedData;
+      },
+      sendDataToServer(result) {
+        this.axios
+            .post('http://localhost:3000/mars', { result })
+            .then(res => {
+              console.log(res.data.jsonPath);
+            })
+            .catch(err => {
+              throw new Error(`Ошибка отправки данных на сервер\n ${ err }`);
+            });
       }
     }
   };
