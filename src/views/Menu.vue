@@ -36,12 +36,13 @@
 			justify-content: center;
 		}
 
-		.chats{
+		.chats {
 			display: flex;
 			flex-direction: column;
 
-			button{
-				margin-bottom: 5px;
+			button {
+				width: 100%;
+				margin: 0 0 5px;
 			}
 		}
 

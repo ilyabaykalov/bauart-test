@@ -48,6 +48,10 @@
       });
     },
     beforeDestroy() {
+      io.emit('logout', {
+        name: this.name,
+        room: this.room
+      });
       io.disconnect();
     },
     methods: {
