@@ -1,6 +1,5 @@
 import Vue from 'vue';
 import Router from 'vue-router';
-import Menu from '@/views/Menu';
 
 Vue.use(Router);
 
@@ -9,7 +8,7 @@ export default new Router({
   routes: [
     {
       path: '/',
-      component: Menu
+      component: () => import('./views/Menu')
     },
     {
       path: '/apod',
@@ -22,6 +21,11 @@ export default new Router({
     {
       path: '/mars',
       component: () => import('./components/MarsWeather')
+    },
+    {
+      path: '/chat/:chatRoomId',
+      name: 'chat',
+      component: () => import('./components/Chat')
     }
   ]
 });

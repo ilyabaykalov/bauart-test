@@ -64,9 +64,6 @@
       sendDataToServer(result) {
         this.axios
             .post('http://localhost:3000/apod', result)
-            .then(res => {
-              console.log(res.data.jsonPath, res.data.imagePath);
-            })
             .catch(err => {
               throw new Error(`Ошибка отправки данных на сервер\n ${ err }`);
             });

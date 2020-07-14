@@ -145,9 +145,6 @@
       sendDataToServer(result) {
         this.axios
             .post('http://localhost:3000/mars', { result })
-            .then(res => {
-              console.log(res.data.jsonPath);
-            })
             .catch(err => {
               throw new Error(`Ошибка отправки данных на сервер\n ${ err }`);
             });
