@@ -22,6 +22,9 @@
 					<router-link :to="{ name: 'chat', params: { chatRoomId: 3 }}">Chatroom #3</router-link>
 				</button>
 			</div>
+			<button>
+				<router-link to='/chart'>Chart</router-link>
+			</button>
 		</div>
 	</div>
 </template>

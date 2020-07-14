@@ -9,12 +9,14 @@
   },
   "dependencies": {
     "axios": "^0.19.2",
+    "chart.js": "^2.9.3",
     "core-js": "^3.6.5",
     "moment": "^2.27.0",
+    "socket.io-client": "^2.3.0",
     "vue": "^2.6.11",
     "vue-axios": "^2.1.5",
-    "vue-router": "^3.3.4",
-    "socket.io-client": "^2.3.0"
+    "vue-chartjs": "^3.5.0",
+    "vue-router": "^3.3.4"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "~4.4.0",
